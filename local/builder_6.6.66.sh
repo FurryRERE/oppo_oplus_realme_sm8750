@@ -152,7 +152,7 @@ if [[ "$KSU_BRANCH" == "y" || "$KSU_BRANCH" == "Y" ]]; then
   grep -A10 "REPO_OWNER" kernel/Kbuild | head -n 10
   echo "------------------------------------------------"
   grep "KSU_VERSION_FULL" kernel/Kbuild
-  echo ">>> 最终版本字符串: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}@cctv18"
+  echo ">>> 最终版本字符串: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}Furry热热"
   echo ">>> Version Code: ${KSU_VERSION_CODE}"
 elif [[ "$KSU_BRANCH" == "n" || "$KSU_BRANCH" == "N" ]]; then
   echo ">>> 拉取 KernelSU Next 并设置版本..."
@@ -172,7 +172,7 @@ elif [[ "$KSU_BRANCH" == "m" || "$KSU_BRANCH" == "M" ]]; then
   sed -i "s/DKSU_VERSION=16/DKSU_VERSION=${KSU_VERSION}/" kernel/Kbuild
 else
   echo "正在配置原版 KernelSU (tiann/KernelSU)..."
-  curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s main
+  curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/refs/heads/main/kernel/setup.sh" | bash -s v2.1.2
   cd ./KernelSU
   KSU_VERSION=$(expr $(curl -sI "https://api.github.com/repos/tiann/KernelSU/commits?sha=main&per_page=1" | grep -i "link:" | sed -n 's/.*page=\([0-9]*\)>; rel="last".*/\1/p') "+" 30000)
   sed -i "s/DKSU_VERSION=16/DKSU_VERSION=${KSU_VERSION}/" kernel/Kbuild
