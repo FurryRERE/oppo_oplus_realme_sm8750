@@ -264,7 +264,7 @@ jobs:
             sed -i "s/DKSU_VERSION=16/DKSU_VERSION=${KSU_VERSION}/" kernel/Kbuild
           fi
 {{ github.event.inputs.ksu_type }} == "仅内核" ]];
-          fi
+then
 
       - name: 应用 KernelSU & SUSFS 补丁
         if: inputs.susfs_enable
